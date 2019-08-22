@@ -23,4 +23,3 @@ RUN apk add --no-cache curl
 # Set up app dir with permissions
 WORKDIR /usr/src/app
 RUN chown -R node:node .
-USER node
