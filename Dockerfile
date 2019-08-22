@@ -8,7 +8,7 @@
 # authors:  development@minddoc.com
 # ------------------------------------------------------
 
-FROM node:12.9-alpine
+FROM node:12.9.0-alpine
 LABEL maintainer="development@minddoc.com"
 
 # Set docker build arguments
