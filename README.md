@@ -10,8 +10,8 @@ Each docker image tag points to a specific Node Alpine version.
 
 | Git Tag                                                        | Node Version                                              | Docker Tags       |
 | :------------------------------------------------------------: |:----------------------------------------------------:| :----------------:|
-| 12.8.1 | [12.8.1](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.8.1) | `12.8.1` |
-| 12.4.0 | [12.4.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.4.0) | `12.4.0`, `latest` |
+| 12.8.1 | [12.8.1](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.8.1) | `12.8.1`, `latest` |
+| 12.4.0 | [12.4.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.4.0) | `12.4.0` |
 
 ## Docker Hub
 
