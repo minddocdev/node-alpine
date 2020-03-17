@@ -8,10 +8,10 @@
 # authors:  development@minddoc.com
 # ------------------------------------------------------
 
-FROM node:12.13-alpine
+FROM node:12.16-alpine
 
 LABEL maintainer="development@minddoc.com"
 
 # Add curl for debugging purposes
 RUN apk --update add --no-cache curl && \
-    npm install -g yarn
+    npm install -g --force yarn
