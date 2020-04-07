@@ -1,0 +1,42 @@
+name: "docker"
+
+on:
+  push:
+    tags:
+      - "*"
+    paths:
+      - ".dockerignore"
+      - "Dockerfile"
+
+env:
+  APP: node-alpine
+
+jobs:
+  docker:
+    name: docker build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@master
+      - name: Import Secrets
+        uses: minddocdev/vault-action@master
+        with:
+          url: ${{ secrets.VAULT_HOST }}
+          token: ${{ secrets.MINDDOCBOT_TOKEN }}
+          secrets: |
+            - path: ${{ secrets.VAULT_PATH }}
+              key: dockerhubUser
+              env: DOCKER_USER
+            - path: ${{ secrets.VAULT_PATH }}
+              key: dockerhubAccessToken
+              env: DOCKER_PASSWORD
+      - name: Set VERSION tag
+        run: echo ::set-env name=VERSION::${GITHUB_REF#refs/tags/}
+      - name: Build and publish docker image to GCP Container Registry
+        uses: minddocdev/mou-docker-action@master
+        with:
+          name: minddocdev/${{ env.APP }}
+          username: ${{ env.DOCKER_USER }}
+          password: ${{ env.DOCKER_PASSWORD }}
+          cache: true
+          tags: latest
