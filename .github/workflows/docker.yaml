@@ -7,6 +7,12 @@ on:
     paths:
       - ".dockerignore"
       - "Dockerfile"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Docker tag to push'     
+        required: true
+        default: '${GITHUB_REF#refs/tags/}'
 
 env:
   APP: node-alpine
