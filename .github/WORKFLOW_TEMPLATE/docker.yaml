@@ -1,0 +1,7 @@
+#@ load("@ytt:library", "library")
+#@ load("@ytt:template", "template")
+
+#@ workflow_docker = library.get("github_actions").export("workflow_docker")
+
+---
+#@ template.replace([workflow_docker(app="node-alpine")])

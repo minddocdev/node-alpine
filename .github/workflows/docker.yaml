@@ -1,52 +1,50 @@
-name: "docker"
-
-on:
+name: docker
+"on":
   push:
     tags:
-      - "*"
+    - '*'
     paths:
-      - ".dockerignore"
-      - "Dockerfile"
+    - .dockerignore
+    - Dockerfile
   workflow_dispatch:
     inputs:
-      tag:
-        description: 'Docker tag to push'
+      version:
+        description: Docker version to push
         required: true
-        default: 'latest'
-
+        default: latest
 env:
   APP: node-alpine
-
+  DOCKER_HUB_PROJECT: minddocdev
 jobs:
-  docker:
+  docs:
     name: docker build and publish
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout git repository
-        uses: actions/checkout@master
-      - name: Import Secrets
-        uses: minddocdev/vault-action@master
-        with:
-          url: ${{ secrets.VAULT_HOST }}
-          token: ${{ secrets.MINDDOCBOT_TOKEN }}
-          secrets: |
-            - path: ${{ secrets.VAULT_PATH }}
-              key: dockerhubUser
-              env: DOCKER_USER
-            - path: ${{ secrets.VAULT_PATH }}
-              key: dockerhubAccessToken
-              env: DOCKER_PASSWORD
-      - if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        name: Set VERSION tag
-        run: echo ::set-env name=VERSION::${GITHUB_REF#refs/tags/}
-      - if: github.event_name == 'workflow_dispatch'
-        name: Set VERSION tag
-        run: echo ::set-env name=VERSION::${GITHUB_REF#refs/tags/}
-      - name: Build and publish docker image to GCP Container Registry
-        uses: minddocdev/mou-docker-action@master
-        with:
-          name: minddocdev/${{ env.APP }}
-          username: ${{ env.DOCKER_USER }}
-          password: ${{ env.DOCKER_PASSWORD }}
-          cache: true
-          tags: latest
+    - name: Checkout git repository
+      uses: actions/checkout@v2.3.2
+    - name: Import docker_public variables from vault
+      uses: minddocdev/vault-action@master
+      with:
+        url: ${{ secrets.VAULT_ENDPOINT }}
+        token: ${{ secrets.MINDDOCBOT_TOKEN }}
+        secrets: |
+          - path: ${{ secrets.VAULT_PATH }}
+            key: dockerhubUser
+            env: DOCKER_USER
+          - path: ${{ secrets.VAULT_PATH }}
+            key: dockerhubAccessToken
+            env: DOCKER_PASSWORD
+    - if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+      name: Set VERSION from tag
+      run: echo ::set-env name=VERSION::${GITHUB_REF#refs/tags/}
+    - if: github.event_name == 'workflow_dispatch'
+      name: Set VERSION from workflow_dispatch
+      run: echo ::set-env name=VERSION::${{github.event.inputs.version}}
+    - name: Build and publish docker image
+      uses: minddocdev/mou-docker-action@master
+      with:
+        name: ${{ env.DOCKER_HUB_PROJECT }}/${{ env.APP }}
+        username: ${{ env.DOCKER_USER }}
+        tags: latest
+        password: ${{ env.DOCKER_PASSWORD }}
+        cache: true

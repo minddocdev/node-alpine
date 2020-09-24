@@ -1,0 +1,4 @@
+[submodule ".github/WORKFLOW_TEMPLATE/_ytt_lib/github_actions"]
+	path = .github/WORKFLOW_TEMPLATE/_ytt_lib/github_actions
+	url = https://github.com/minddocdev/ytt-github-actions
+	branch = master
