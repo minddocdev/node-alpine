@@ -8,7 +8,7 @@
 # authors:  development@minddoc.com
 # ------------------------------------------------------
 
-FROM node:14.11.0-alpine
+FROM node:14.15.1-alpine
 
 LABEL maintainer="development@minddoc.com"
 
