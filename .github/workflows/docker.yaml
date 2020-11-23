@@ -1,4 +1,4 @@
-name: docker
+name: docker.node-alpine
 "on":
   push:
     tags:
@@ -16,7 +16,7 @@ env:
   APP: node-alpine
   DOCKER_HUB_PROJECT: minddocdev
 jobs:
-  docs:
+  docker:
     name: docker build and publish
     runs-on: ubuntu-latest
     steps:
@@ -28,23 +28,24 @@ jobs:
         url: ${{ secrets.VAULT_ENDPOINT }}
         token: ${{ secrets.MINDDOCBOT_TOKEN }}
         secrets: |
-          - path: ${{ secrets.VAULT_PATH }}
+          - path: platform/docker
             key: dockerhubUser
             env: DOCKER_USER
-          - path: ${{ secrets.VAULT_PATH }}
+          - path: platform/docker
             key: dockerhubAccessToken
             env: DOCKER_PASSWORD
     - if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
       name: Set VERSION from tag
-      run: echo ::set-env name=VERSION::${GITHUB_REF#refs/tags/}
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
     - if: github.event_name == 'workflow_dispatch'
       name: Set VERSION from workflow_dispatch
-      run: echo ::set-env name=VERSION::${{github.event.inputs.version}}
+      run: echo "VERSION=${{github.event.inputs.version}}" >> $GITHUB_ENV
     - name: Build and publish docker image
       uses: minddocdev/mou-docker-action@master
       with:
         name: ${{ env.DOCKER_HUB_PROJECT }}/${{ env.APP }}
         username: ${{ env.DOCKER_USER }}
         tags: latest
+        buildargs: APP,VERSION
         password: ${{ env.DOCKER_PASSWORD }}
         cache: true

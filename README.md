@@ -8,15 +8,15 @@ See [full tags list](https://cloud.docker.com/u/minddocdev/repository/docker/min
 
 Each docker image tag points to a specific Node Alpine version.
 
-| Git Tag                                                        | Node Version                                              | Docker Tags       |
-| :------------------------------------------------------------: |:----------------------------------------------------:| :----------------:|
-| 14.11.0 | [14.11.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.11.0) | `14.11.0`, `latest` |
-| 13.14.0 | [13.14.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V13.md#13.14.0) | `13.14.0` |
-| 12.18.0 | [12.18.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.18.0) | `12.18.0` |
-| 12.13.0 | [12.13.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.13.0) | `12.13.0` |
-| 12.10.0 | [12.10.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.10.0) | `12.10.0` |
-| 12.8.1 | [12.8.1](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.8.1) | `12.8.1` |
-| 12.4.0 | [12.4.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.4.0) | `12.4.0` |
+| Git Tag    | Node Version                                                                                  | Docker Tags         |
+|:----------:|:---------------------------------------------------------------------------------------------:|:-------------------:|
+| 14.11.0    | [14.11.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.11.0) | `14.11.0`, `latest` |
+| 13.14.0    | [13.14.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V13.md#13.14.0) | `13.14.0`           |
+| 12.18.0    | [12.18.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.18.0) | `12.18.0`           |
+| 12.13.0    | [12.13.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.13.0) | `12.13.0`           |
+| 12.10.0    | [12.10.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.10.0) | `12.10.0`           |
+| 12.8.1     | [12.8.1](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.8.1)   | `12.8.1`            |
+| 12.4.0     | [12.4.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.4.0)   | `12.4.0`            |
 
 ## Docker Hub
 
