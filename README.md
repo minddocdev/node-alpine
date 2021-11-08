@@ -10,7 +10,8 @@ Each docker image tag points to a specific Node Alpine version.
 
 | Git Tag    | Node Version                                                                                  | Docker Tags         |
 |:----------:|:---------------------------------------------------------------------------------------------:|:-------------------:|
-| 14.16.0    | [14.16.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.16.0) | `14.16.0`, `latest` |
+| 16.13.0    | [16.13.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V16.md#16.13.0) | `16.13.0`, `latest` |
+| 14.16.0    | [14.16.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.16.0) | `14.16.0` |
 | 14.15.1    | [14.15.1](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.11.0) | `14.15.1`, |
 | 13.14.0    | [13.14.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V13.md#13.14.0) | `13.14.0`           |
 | 12.18.0    | [12.18.0](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.18.0) | `12.18.0`           |
